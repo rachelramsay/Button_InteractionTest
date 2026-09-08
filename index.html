@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Shine + Trace Lab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-theme="light" data-button="primary" data-shine="on" data-trace="on">
+    <main class="app-shell">
+      <section class="controls" aria-label="Button demo controls">
+        <div class="setup">
+          <fieldset>
+            <legend>Appearance</legend>
+            <div class="segmented" role="group" aria-label="Appearance">
+              <button class="choice is-selected" data-theme-choice="light" aria-pressed="true">Light</button>
+              <button class="choice" data-theme-choice="dark" aria-pressed="false">Dark</button>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Button family</legend>
+            <div class="pill-row" role="group" aria-label="Button family">
+              <button class="choice is-selected" data-button-choice="primary" aria-pressed="true">Primary</button>
+              <button class="choice" data-button-choice="secondary" aria-pressed="false">Secondary</button>
+              <button class="choice" data-button-choice="accent-one" aria-pressed="false">Accent 01</button>
+              <button class="choice" data-button-choice="accent-two" aria-pressed="false">Accent 02</button>
+            </div>
+            <div class="setup-row">
+              <label class="label-editor">Button label<input id="buttonLabelInput" type="text" value="Primary" maxlength="32" /></label>
+              <label class="range-row">
+                <span class="range-name">Corner radius</span>
+                <input type="range" id="buttonRadius" min="0" max="24" step="1" value="4" />
+                <output>4px</output>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <fieldset class="layer">
+          <legend>01 · Shine <small>light sweep</small></legend>
+          <label class="switch"><input type="checkbox" id="shineOn" checked /><span>Enabled</span></label>
+
+          <label class="range-row">
+            <span class="range-name">Band width</span>
+            <input type="range" id="shineWidth" min="5" max="160" step="1" value="55" />
+            <output>55%</output>
+          </label>
+          <label class="range-row">
+            <span class="range-name">Start offset</span>
+            <input type="range" id="shineStart" min="-220" max="0" step="1" value="-65" />
+            <output>-65%</output>
+          </label>
+          <label class="range-row">
+            <span class="range-name">Travel</span>
+            <input type="range" id="shineTravel" min="0" max="600" step="5" value="320" />
+            <output>320%</output>
+          </label>
+          <label class="range-row">
+            <span class="range-name">Skew</span>
+            <input type="range" id="shineSkew" min="-60" max="60" step="1" value="-22" />
+            <output>-22deg</output>
+          </label>
+          <label class="range-row">
+            <span class="range-name">Duration</span>
+            <input type="range" id="shineDuration" min="100" max="2500" step="10" value="700" />
+            <output>700ms</output>
+          </label>
+          <label class="range-row">
+            <span class="range-name">Delay</span>
+            <input type="range" id="shineDelay" min="0" max="1500" step="10" value="0" />
+            <output>0ms</output>
+          </label>
+          <label class="range-row">
+            <span class="range-name">Intensity</span>
+            <input type="range" id="shineOpacity" min="0" max="100" step="1" value="38" />
+            <output>38%</output>
+          </label>
+          <div class="tint-row">
+            <label class="tint-swatch"><span class="range-name">Tint</span><input type="color" id="shineTint" value="#ffffff" /></label>
+            <label class="switch"><input type="checkbox" id="shineTintAuto" /><span>Match label</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="layer">
+          <legend>02 · Trace <small>border travels</small></legend>
+          <label class="switch"><input type="checkbox" id="traceOn" checked /><span>Enabled</span></label>
+
+          <label class="range-row">
+            <span class="range-name">Thickness</span>
+            <input type="range" id="traceWidth" min="0.5" max="8" step="0.5" value="2" />
+            <output>2px</output>
+          </label>
+          <label class="range-row">
+            <span class="range-name">Arc length</span>
+            <input type="range" id="traceArc" min="5" max="350" step="1" value="66" />
+            <output>66deg</output>
+          </label>
+          <label class="range-row">
+            <span class="range-name">Edge fade</span>
+            <input type="range" id="traceFade" min="0" max="120" step="1" value="30" />
+            <output>30deg</output>
+          </label>
+          <label class="range-row">
+            <span class="range-name">Lap time</span>
+            <input type="range" id="traceDuration" min="200" max="4000" step="20" value="720" />
+            <output>720ms</output>
+          </label>
+          <label class="range-row">
+            <span class="range-name">Inset</span>
+            <input type="range" id="traceInset" min="-8" max="4" step="1" value="-1" />
+            <output>-1px</output>
+          </label>
+          <label class="range-row">
+            <span class="range-name">Intensity</span>
+            <input type="range" id="traceOpacity" min="0" max="100" step="1" value="100" />
+            <output>100%</output>
+          </label>
+          <div class="tint-row">
+            <label class="tint-swatch"><span class="range-name">Tint</span><input type="color" id="traceTint" value="#ffffff" /></label>
+            <label class="switch"><input type="checkbox" id="traceTintAuto" checked /><span>Match label</span></label>
+            <label class="switch"><input type="checkbox" id="traceReverse" /><span>Reverse</span></label>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" class="ghost" id="resetButton">Reset defaults</button>
+          <button type="button" class="ghost" id="copyButton">Copy CSS</button>
+          <span class="copy-status" id="copyStatus" role="status"></span>
+        </div>
+      </section>
+
+      <section class="stage" aria-label="Interactive button preview">
+        <div class="stage-topline"><span>Live preview</span><span>Hover + click to test</span></div>
+        <div class="preview-area">
+          <div class="guide guide-one"></div><div class="guide guide-two"></div><div class="guide guide-three"></div>
+          <div class="button-wrap">
+            <button id="demoButton" class="demo-button" type="button">
+              <span class="shine" aria-hidden="true"></span>
+              <span class="button-label">Primary</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <footer><span>Shine + trace, one button</span><span>Keyboard accessible · respects reduced motion</span></footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
