@@ -6,10 +6,10 @@
   --ink:#161513; --muted:#64716e; --line:#dce3e6;
   --canvas:#f5fafc; --panel:#fbf9f8; --stage:#edf6f9;
   --preview-gradient:linear-gradient(180deg,#f5fafc 1.813%,#f1efed 36.562%,#edf6f9 71.307%);
-  --primary:#1a2f3f; --primary-ink:#f5fafc;
-  --secondary:transparent; --secondary-ink:#161513; --secondary-border:#13212c;
-  --accent-one:#f0cc71; --accent-one-ink:#000;
-  --accent-two:#f96e5a; --accent-two-ink:#fbf9f8;
+  --primary:#1f3a4b; --primary-hover:#0b171f; --primary-ink:#f5fafc;
+  --secondary:transparent; --secondary-ink:#201e1c; --secondary-border:#201e1c;
+  --accent-one:#f0cc71; --accent-one-hover:#fadfa3; --accent-one-ink:#161513;
+  --accent-two:#f96e5a; --accent-two-hover:#fe9f8f; --accent-two-ink:#161513;
   --shadow-one:rgba(15,23,33,.1); --shadow-two:rgba(15,23,33,.06); --shadow:rgba(15,23,33,.2);
 }
 
@@ -17,10 +17,10 @@ body[data-theme="dark"] {
   --ink:#fbf9f8; --muted:#b7c4c8; --line:#46535e;
   --canvas:#1a2f3f; --panel:#223445; --stage:#2c2b3c;
   --preview-gradient:linear-gradient(180deg,#1a2f3f 11.517%,#2c2b3c 78.087%);
-  --primary:#36677d; --primary-ink:#f5fafc;
+  --primary:#36677d; --primary-hover:#264759; --primary-ink:#f5fafc;
   --secondary:transparent; --secondary-ink:#fbf9f8; --secondary-border:#fbf9f8;
-  --accent-one:#f0cc71; --accent-one-ink:#000;
-  --accent-two:#f96e5a; --accent-two-ink:#fbf9f8;
+  --accent-one:#f0cc71; --accent-one-hover:#fadfa3; --accent-one-ink:#161513;
+  --accent-two:#f96e5a; --accent-two-hover:#fe9f8f; --accent-two-ink:#161513;
   --shadow-one:rgba(0,0,0,.44); --shadow-two:rgba(0,0,0,.28); --shadow:rgba(0,0,0,.45);
 }
 
@@ -208,6 +208,7 @@ legend small { text-transform:none; letter-spacing:0; opacity:.75; }
   --trace-direction:normal;
 
   --button-bg:var(--primary);
+  --button-bg-hover:var(--primary-hover);
   --button-ink:var(--primary-ink);
   --button-border:transparent;
   --button-ring:color-mix(in srgb,var(--primary) 35%,transparent);
@@ -235,10 +236,15 @@ legend small { text-transform:none; letter-spacing:0; opacity:.75; }
 .demo-button:focus-visible { outline:3px solid var(--button-ring); outline-offset:5px; }
 
 body[data-button="secondary"] .demo-button {
-  --button-bg:var(--secondary); --button-ink:var(--secondary-ink); --button-border:var(--secondary-border);
+  --button-bg:var(--secondary); --button-bg-hover:var(--secondary); --button-ink:var(--secondary-ink); --button-border:var(--secondary-border);
 }
-body[data-button="accent-one"] .demo-button { --button-bg:var(--accent-one); --button-ink:var(--accent-one-ink); }
-body[data-button="accent-two"] .demo-button { --button-bg:var(--accent-two); --button-ink:var(--accent-two-ink); }
+body[data-button="accent-one"] .demo-button { --button-bg:var(--accent-one); --button-bg-hover:var(--accent-one-hover); --button-ink:var(--accent-one-ink); }
+body[data-button="accent-two"] .demo-button { --button-bg:var(--accent-two); --button-bg-hover:var(--accent-two-hover); --button-ink:var(--accent-two-ink); }
+
+/* Hover moves the ground AWAY from the label: dark grounds with light labels deepen,
+   light grounds with dark labels lighten. One rule, both directions. */
+.demo-button:hover,
+.demo-button:focus-visible { background:var(--button-bg-hover); }
 
 /* 01 — light sweep. Its own clipping layer so the trace can sit outside. */
 
