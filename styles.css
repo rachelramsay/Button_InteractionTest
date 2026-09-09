@@ -244,7 +244,15 @@ body[data-button="accent-two"] .demo-button { --button-bg:var(--accent-two); --b
 /* Hover moves the ground AWAY from the label: dark grounds with light labels deepen,
    light grounds with dark labels lighten. One rule, both directions. */
 .demo-button:hover,
-.demo-button:focus-visible { background:var(--button-bg-hover); }
+.demo-button:focus-visible {
+  background:var(--button-bg-hover);
+  /* motion/transition/feedback — duration/75 + easing/standard. An element
+     answering in place should land before the shine has crossed it. Hover-out
+     falls back to the base transition, so it enters fast and releases softly. */
+  transition:background 75ms cubic-bezier(.2,0,0,1),
+             transform .22s cubic-bezier(.2,.8,.2,1),
+             box-shadow .22s cubic-bezier(.2,.8,.2,1);
+}
 
 /* 01 — light sweep. Its own clipping layer so the trace can sit outside. */
 
